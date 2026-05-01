@@ -1,11 +1,22 @@
-# <div style="text-align: center;">UMIS-YOLO: Underwater Multimodal Images Instance Segmentation with YOLO</div>
+# <div style="text-align: center;">Curb-Guided Visual Perception and Multi-Scale Feature Learning for Urban Waterlogging Semantic Segmentation</div>
 
 
 ## Introduction 
 
-We presents a novel multimodal instance segmentation method, termed UMIS-YOLO, which is grounded in the YOLO architecture. UMIS-YOLO incorporates a dual backbone network design that substantially enhances the feature extraction capabilities for both RGB images and depth images, thereby improving the effectiveness of instance segmentation. At the same time, we propose two innovative plug-and-play modules: the frequency-domain feature enhancement fusion (FDFEF) module and the residual feature fusion (RFF) module. The FDFEF module leverages Fourier transform to enhance the features of both modalities in the frequency domain, using learnable weights to enable the complementary integration of amplitude and phase information. While the RFF module uses a residual learning strategy to efficiently merge low-level and high-level features prior to the segmentation head, thereby improving pixel-level segmentation accuracy. 
-
-In addition, we introduce a challenging high-resolution dataset, UMIS-Coral, which comprises RGB images and depth images captured in complex coral environments. Meanwhile, we expand the depth images for the UIIS dataset to further verify the effectiveness of UMIS-YOLO. 
+Urban waterlogging induced by extreme precipitation poses significant threats to transportation safety
+and municipal resilience. While conventional monitoring relies on costly sensor networks with limited
+spatial coverage, efficient visual perception solutions remain underexplored. This work introduces FL-
+YOLO, a specialized, curb-guided lightweight segmentation framework designed to quantify inunda-
+tion depth by leveraging the standardized geometric height of road curbstones as a static reference. To
+resolve the critical challenges of boundary ambiguity and structural fragmentation in flooded scenes,
+we propose two pivotal components: the Feature Complementary Mapping (FCM) module for
+preserving fine-grained spatial details in shallow hierarchies, and the Local-Region Self-Attention
+(LRSA) module for parsing micro-textural dependencies at the water-concrete interface. Further-
+more, a domain-specific dataset, CurbFloodSeg, is established to support high-precision model
+training and benchmarking. Extensive experiments demonstrate that FL-YOLO achieves an mIoU of
+72.03%, an mDice of 80.84%, and a pixel accuracy of 81.99%, consistently outperforming state-of-the-
+art baselines. The proposed framework provides a robust, real-time, and scalable approach for urban
+flood monitoring, exhibiting exceptional generalization across diverse and complex environments
 
 ## Document
 ### Recommended Environment
@@ -20,7 +31,7 @@ You only need to install the corresponding libraries to refer to train.by and va
 
 
 ## Dataset
-Like [UMIS-Coral.yaml](./UMIS-Coral.yaml) and [UIIS-Depth.yaml](./UIIS-Depth.yaml) You can use your own dataset.
+Like [curb.yaml](./curb.yaml)  You can use your own dataset.
 
 <details open>
   <summary><b>File structure</b></summary>
@@ -46,65 +57,22 @@ Your dataset
 
 </details>
 
-You can download the datasets using the following link:
-- [UMIS-Coral](https://pan.baidu.com/s/1vaN8dDm7PiPvmimFUSPS9A) (password: tdvb)
-
-- [UIIS-Depth](https://pan.baidu.com/s/1Bjjw9ynVoJrP_VuoEe1ttQ) (password: bqvg)
-
-## Pipeline
-### The framework
-<div align="center">
-  <img src="imgs/structure.png" alt="network" width="600" />
-</div>
-
- The overall framework of UMIS-YOLO adopts a dual backbone network architecture that is compatible with YOLO
-architecture. FDFEF and RFF modules are introduced to better integrate the features of RGB images and depth images, thereby
-enhancing the performance of underwater instance segmentation
-
-### FDFEF
-<div align="center">
-  <img src="imgs/FDFEF.png" alt="FDFEF" width="600" />
-</div>
-
-The FDFEF module initially enhances the features of RGB and depth images independently within
-the frequency domain, subsequently integrating these features through a fusion of amplitude and phase components.
-
-### RFF
-<div align="center">
-  <img src="imgs/RFF.png" alt="RFF" width="500">
-</div>
-
-The RFF module adeptly integrates the P1-level features extracted from the backbone network with
-the features preceding the segmentation head.
-
-## Visual comparison
-### UMIS-Coral
-<div align="center">
-  <img src="imgs/Coral_result.png" alt="Coral_result" width="800" />
-</div>
-
-### UIIS-Depth
-<div align="center">
-  <img src="imgs/UIIS_result.png" alt="UIIS_result" width="800" />
-</div>
-
- 
- ###  Trained Weights：
- - [UMIS-Coral](https://pan.baidu.com/s/1KHIqiNq0Ijsbgy49aDzTww) (password: fy9s)
- - [UIIS-Depth](https://pan.baidu.com/s/1KHIqiNq0Ijsbgy49aDzTww) (password: fy9s)
-
 
 
 ## Citation
-If you use this code or ideas from the paper for your research, please cite our paper:
-```
 
-@article{yang2025umis,
-  title={UMIS-YOLO: Underwater Multimodal Images Instance Segmentation with YOLO},
-  author={Yang, Yue and Feng, Xiaoyi and Li, Ming and Hu, Xiangyun and Qin, Jiangying and Gruen, Armin and Li, Deren and Gong, Jianya},
-  journal={IEEE Transactions on Geoscience and Remote Sensing},
-  year={2025},
-  publisher={IEEE}
+If you find our code, models, or the CurbFloodSeg dataset useful in your research, please consider citing our manuscript currently under review at *The Visual Computer*:
+
+**Plain Text:**
+Hao Xiao, Yang Shen, Yuming Zhang, Tingmin Liu, Zhifeng Hu, Yuncan Gao, Runlong Cao, and Ying Zang. "Curb-Guided Visual Perception and Multi-Scale Feature Learning for Urban Waterlogging Semantic Segmentation." *Submitted to The Visual Computer*, 2026.
+
+**BibTeX:**
+```bibtex
+@article{xiao2026curb,
+  title={Curb-Guided Visual Perception and Multi-Scale Feature Learning for Urban Waterlogging Semantic Segmentation},
+  author={Xiao, Hao and Shen, Yang and Zhang, Yuming and Liu, Tingmin and Hu, Zhifeng and Gao, Yuncan and Cao, Runlong and Zang, Ying},
+  journal={Submitted to The Visual Computer},
+  year={2026}
 }
 ```
 
